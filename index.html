@@ -3,62 +3,89 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pre-Discovery Intake Form</title>
+<title>Pre-Discovery Intake Form | Forestdale Metal Products Inc.</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6f9; color: #222; font-size: 14px; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f0f0; color: #222; font-size: 14px; }
 
-  .page { max-width: 800px; margin: 32px auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 16px rgba(0,0,0,0.10); overflow: hidden; }
+  .page { max-width: 800px; margin: 32px auto; background: #fff; border-radius: 4px; box-shadow: 0 2px 20px rgba(0,0,0,0.15); overflow: hidden; }
 
-  .header { background: #1a2e4a; color: #fff; padding: 32px 40px 24px; }
-  .header h1 { font-size: 22px; font-weight: 700; }
-  .header p { margin-top: 8px; font-size: 13px; opacity: 0.82; line-height: 1.6; }
-  .header .meta { margin-top: 14px; font-size: 12px; opacity: 0.6; }
+  /* Header */
+  .header { background: #000; color: #fff; padding: 0; }
+  .header-top { padding: 28px 40px 20px; display: flex; align-items: center; gap: 20px; }
+  .logo-lockup { display: flex; flex-direction: column; }
+  .logo-text { font-size: 28px; font-weight: 900; letter-spacing: 2px; color: #fff; text-transform: uppercase; line-height: 1; }
+  .logo-f { color: #c8102e; font-size: 32px; font-weight: 900; display: inline-block; margin-left: 6px; transform: skewX(-8deg); }
+  .logo-divider { width: 100%; height: 3px; background: #c8102e; margin: 6px 0 4px; }
+  .logo-sub { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: #fff; text-transform: uppercase; }
+  .header-body { padding: 0 40px 28px; border-top: 1px solid #222; }
+  .header-body h1 { font-size: 20px; font-weight: 700; color: #fff; margin-top: 20px; letter-spacing: 0.5px; }
+  .header-body p { margin-top: 8px; font-size: 13px; color: #bbb; line-height: 1.65; }
+  .header-meta { margin-top: 12px; font-size: 11px; color: #666; letter-spacing: 0.5px; }
 
   .body { padding: 32px 40px 40px; }
 
-  .intro-box { background: #eef3fa; border-left: 4px solid #2563eb; border-radius: 4px; padding: 14px 18px; margin-bottom: 28px; font-size: 13px; line-height: 1.65; color: #1e3a5f; }
+  .intro-box { background: #fff5f5; border-left: 4px solid #c8102e; border-radius: 2px; padding: 14px 18px; margin-bottom: 28px; font-size: 13px; line-height: 1.65; color: #3a0a0a; }
 
-  h2 { font-size: 15px; font-weight: 700; color: #1a2e4a; background: #eef3fa; border-radius: 4px; padding: 10px 14px; margin: 0 0 20px; letter-spacing: 0.2px; border-left: 4px solid #2563eb; }
+  h2 { font-size: 13px; font-weight: 800; color: #fff; background: #000; border-radius: 2px; padding: 10px 14px; margin: 0 0 20px; letter-spacing: 1.5px; text-transform: uppercase; border-left: 4px solid #c8102e; }
 
   .q-block { margin-bottom: 18px; }
   .q-label { font-size: 13px; color: #333; line-height: 1.55; margin-bottom: 6px; }
   .q-label strong { color: #111; }
-  .note { font-size: 11.5px; color: #666; margin-top: 4px; font-style: italic; }
+  .note { font-size: 11.5px; color: #888; margin-top: 4px; font-style: italic; }
 
   .radio-row { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; margin-top: 4px; }
   .radio-row label { display: flex; align-items: center; gap: 6px; font-size: 13px; cursor: pointer; }
-  .radio-row input[type=radio] { accent-color: #2563eb; width: 15px; height: 15px; }
+  .radio-row input[type=radio] { accent-color: #c8102e; width: 15px; height: 15px; }
 
-  .text-input { width: 100%; border: 1px solid #d1d5db; border-radius: 4px; padding: 7px 10px; font-size: 13px; color: #222; margin-top: 6px; outline: none; transition: border 0.2s; }
-  .text-input:focus { border-color: #2563eb; }
+  .text-input { width: 100%; border: 1px solid #d1d5db; border-radius: 2px; padding: 7px 10px; font-size: 13px; color: #222; margin-top: 6px; outline: none; transition: border 0.2s; }
+  .text-input:focus { border-color: #c8102e; }
 
   .indent { padding-left: 20px; border-left: 2px solid #e5e7eb; margin-top: 10px; }
 
   .checkbox-grid { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 8px; }
   .checkbox-grid label { display: flex; align-items: center; gap: 6px; font-size: 13px; cursor: pointer; }
-  .checkbox-grid input[type=checkbox] { accent-color: #2563eb; width: 14px; height: 14px; }
+  .checkbox-grid input[type=checkbox] { accent-color: #c8102e; width: 14px; height: 14px; }
 
   .hidden { display: none; }
 
-  .submit-area { text-align: center; margin-top: 32px; padding-top: 24px; border-top: 1px solid #e5e7eb; }
+  .submit-area { text-align: center; margin-top: 32px; padding-top: 24px; border-top: 2px solid #000; }
   .submit-area p { font-size: 12.5px; color: #666; margin-bottom: 14px; }
-  .submit-btn { background: #2563eb; color: #fff; border: none; border-radius: 5px; padding: 11px 32px; font-size: 14px; font-weight: 600; cursor: pointer; }
-  .submit-btn:hover { background: #1d4ed8; }
+  .submit-btn { background: #c8102e; color: #fff; border: none; border-radius: 2px; padding: 12px 36px; font-size: 14px; font-weight: 700; cursor: pointer; letter-spacing: 1px; text-transform: uppercase; transition: background 0.2s; }
+  .submit-btn:hover { background: #a00d24; }
+
+  .footer-bar { background: #000; padding: 14px 40px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-bar span { font-size: 11px; color: #555; letter-spacing: 0.5px; }
+  .footer-accent { width: 32px; height: 3px; background: #c8102e; }
 
   @media print {
     body { background: #fff; }
     .page { box-shadow: none; margin: 0; border-radius: 0; }
     .submit-area { display: none; }
+    .footer-bar { display: none; }
   }
 </style>
 </head>
 <body>
 <div class="page">
+
+  <!-- Header -->
   <div class="header">
-    <h1>Pre-Discovery Requirements Intake Form</h1>
-    <p>Please complete this form prior to your upcoming requirements discovery meeting. Your responses help our team prepare accurate quoting details and identify any design considerations in advance.</p>
-    <div class="meta">Form Ref: 20 &nbsp;|&nbsp; v1 &nbsp;|&nbsp; Feb 2026</div>
+    <div class="header-top">
+      <div class="logo-lockup">
+        <div style="display:flex;align-items:baseline;">
+          <span class="logo-text">FORESTDALE</span>
+          <span class="logo-f">&#10097;</span>
+        </div>
+        <div class="logo-divider"></div>
+        <div class="logo-sub">Metal Products Inc.&reg;</div>
+      </div>
+    </div>
+    <div class="header-body">
+      <h1>Pre-Discovery Requirements Intake Form</h1>
+      <p>Please complete this form prior to your upcoming requirements discovery meeting. Your responses help our team prepare accurate quoting details and identify any design considerations in advance.</p>
+      <div class="header-meta">FORM REF: 20 &nbsp;|&nbsp; V1 &nbsp;|&nbsp; FEB 2026 &nbsp;|&nbsp; WOODSTOCK, ONTARIO &nbsp;|&nbsp; EST. 1997</div>
+    </div>
   </div>
 
   <div class="body">
@@ -76,7 +103,7 @@
       </div>
       <div id="deadline_date" class="indent hidden">
         <div class="q-label">Please provide the required date:</div>
-        <input type="date" style="border:1px solid #d1d5db;border-radius:4px;padding:6px 8px;font-size:13px;color:#222;outline:none;">
+        <input type="date" style="border:1px solid #d1d5db;border-radius:2px;padding:6px 8px;font-size:13px;color:#222;outline:none;">
       </div>
     </div>
 
@@ -157,7 +184,7 @@
         </div>
         <div class="q-label" style="margin-top:10px;">If Powder Coated, is a RAL colour specified?</div>
         <div class="radio-row">
-          <label><input type="radio" name="q_ral" value="yes"> Yes — RAL #: <input type="text" style="width:80px;border:1px solid #d1d5db;border-radius:4px;padding:4px 6px;font-size:13px;margin-left:4px;"></label>
+          <label><input type="radio" name="q_ral" value="yes"> Yes — RAL #: <input type="text" style="width:80px;border:1px solid #d1d5db;border-radius:2px;padding:4px 6px;font-size:13px;margin-left:4px;"></label>
           <label><input type="radio" name="q_ral" value="no"> No / TBD</label>
         </div>
       </div>
@@ -205,9 +232,15 @@
 
     <div class="submit-area">
       <p>Please return this form to your contact at least <strong>24 hours before</strong> your scheduled discovery meeting.</p>
-      <button class="submit-btn" onclick="window.print()">🖨 Print / Save as PDF</button>
+      <button class="submit-btn" onclick="window.print()">Print / Save as PDF</button>
     </div>
   </div>
+
+  <div class="footer-bar">
+    <span>FORESTDALE METAL PRODUCTS INC.&reg; &nbsp;|&nbsp; WOODSTOCK, ONTARIO &nbsp;|&nbsp; EST. 1997</span>
+    <div class="footer-accent"></div>
+  </div>
+
 </div>
 
 <script>
