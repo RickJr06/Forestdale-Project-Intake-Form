@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pre-Discovery Intake Form</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6f9; color: #222; font-size: 14px; }
+
+  .page { max-width: 800px; margin: 32px auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 16px rgba(0,0,0,0.10); overflow: hidden; }
+
+  .header { background: #1a2e4a; color: #fff; padding: 32px 40px 24px; }
+  .header h1 { font-size: 22px; font-weight: 700; }
+  .header p { margin-top: 8px; font-size: 13px; opacity: 0.82; line-height: 1.6; }
+  .header .meta { margin-top: 14px; font-size: 12px; opacity: 0.6; }
+
+  .body { padding: 32px 40px 40px; }
+
+  .intro-box { background: #eef3fa; border-left: 4px solid #2563eb; border-radius: 4px; padding: 14px 18px; margin-bottom: 28px; font-size: 13px; line-height: 1.65; color: #1e3a5f; }
+
+  h2 { font-size: 15px; font-weight: 700; color: #1a2e4a; background: #eef3fa; border-radius: 4px; padding: 10px 14px; margin: 0 0 20px; letter-spacing: 0.2px; border-left: 4px solid #2563eb; }
+
+  .q-block { margin-bottom: 18px; }
+  .q-label { font-size: 13px; color: #333; line-height: 1.55; margin-bottom: 6px; }
+  .q-label strong { color: #111; }
+  .note { font-size: 11.5px; color: #666; margin-top: 4px; font-style: italic; }
+
+  .radio-row { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; margin-top: 4px; }
+  .radio-row label { display: flex; align-items: center; gap: 6px; font-size: 13px; cursor: pointer; }
+  .radio-row input[type=radio] { accent-color: #2563eb; width: 15px; height: 15px; }
+
+  .text-input { width: 100%; border: 1px solid #d1d5db; border-radius: 4px; padding: 7px 10px; font-size: 13px; color: #222; margin-top: 6px; outline: none; transition: border 0.2s; }
+  .text-input:focus { border-color: #2563eb; }
+
+  .indent { padding-left: 20px; border-left: 2px solid #e5e7eb; margin-top: 10px; }
+
+  .checkbox-grid { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 8px; }
+  .checkbox-grid label { display: flex; align-items: center; gap: 6px; font-size: 13px; cursor: pointer; }
+  .checkbox-grid input[type=checkbox] { accent-color: #2563eb; width: 14px; height: 14px; }
+
+  .hidden { display: none; }
+
+  .submit-area { text-align: center; margin-top: 32px; padding-top: 24px; border-top: 1px solid #e5e7eb; }
+  .submit-area p { font-size: 12.5px; color: #666; margin-bottom: 14px; }
+  .submit-btn { background: #2563eb; color: #fff; border: none; border-radius: 5px; padding: 11px 32px; font-size: 14px; font-weight: 600; cursor: pointer; }
+  .submit-btn:hover { background: #1d4ed8; }
+
+  @media print {
+    body { background: #fff; }
+    .page { box-shadow: none; margin: 0; border-radius: 0; }
+    .submit-area { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <h1>Pre-Discovery Requirements Intake Form</h1>
+    <p>Please complete this form prior to your upcoming requirements discovery meeting. Your responses help our team prepare accurate quoting details and identify any design considerations in advance.</p>
+    <div class="meta">Form Ref: 20 &nbsp;|&nbsp; v1 &nbsp;|&nbsp; Feb 2026</div>
+  </div>
+
+  <div class="body">
+    <div class="intro-box">
+      <strong>Instructions:</strong> Answer each question as completely as possible. For any <em>Yes</em> answers that prompt a follow-up, please fill in the additional details. If you're unsure of an answer, leave it blank and we'll discuss it together in the meeting.
+    </div>
+
+    <h2>General RFQ Information</h2>
+
+    <div class="q-block">
+      <div class="q-label"><strong>1.</strong> Is there a specified deadline for this quote?</div>
+      <div class="radio-row">
+        <label><input type="radio" name="q_deadline" value="no" onchange="hide('deadline_date')"> No</label>
+        <label><input type="radio" name="q_deadline" value="yes" onchange="show('deadline_date')"> Yes</label>
+      </div>
+      <div id="deadline_date" class="indent hidden">
+        <div class="q-label">Please provide the required date:</div>
+        <input type="date" style="border:1px solid #d1d5db;border-radius:4px;padding:6px 8px;font-size:13px;color:#222;outline:none;">
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-label"><strong>2.</strong> Do all components have a requested quote quantity?</div>
+      <div class="radio-row">
+        <label><input type="radio" name="q_qty" value="yes"> Yes</label>
+        <label><input type="radio" name="q_qty" value="no"> No</label>
+      </div>
+      <div class="note">If no, please note which components are missing quantities in the comments section below.</div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-label"><strong>3.</strong> Do all components have an associated <strong>.STEP file</strong>?</div>
+      <div class="radio-row">
+        <label><input type="radio" name="q_step" value="yes" onchange="hide('step_followup')"> Yes</label>
+        <label><input type="radio" name="q_step" value="no" onchange="show('step_followup')"> No</label>
+      </div>
+      <div id="step_followup" class="indent hidden">
+        <div class="q-label">Can you provide a physical sample of the part(s) missing .STEP files?</div>
+        <div class="radio-row">
+          <label><input type="radio" name="q_step_sample" value="yes"> Yes</label>
+          <label><input type="radio" name="q_step_sample" value="no"> No</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-label"><strong>4.</strong> Has this part been produced by or for your organization before?</div>
+      <div class="radio-row">
+        <label><input type="radio" name="q_prev" value="yes" onchange="show('prev_followup')"> Yes</label>
+        <label><input type="radio" name="q_prev" value="no" onchange="hide('prev_followup')"> No</label>
+      </div>
+      <div id="prev_followup" class="indent hidden">
+        <div class="q-label">Can you provide a sample of the existing part for reference?</div>
+        <div class="radio-row">
+          <label><input type="radio" name="q_prev_sample" value="yes"> Yes</label>
+          <label><input type="radio" name="q_prev_sample" value="no"> No</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-label"><strong>5.</strong> Do any parts in this RFQ have <strong>mating parts</strong> that you are not requesting us to manufacture?</div>
+      <div class="radio-row">
+        <label><input type="radio" name="q_mating" value="yes" onchange="show('mating_followup')"> Yes</label>
+        <label><input type="radio" name="q_mating" value="no" onchange="hide('mating_followup')"> No</label>
+      </div>
+      <div id="mating_followup" class="indent hidden">
+        <div class="q-label">Please describe the mating part(s):</div>
+        <input type="text" class="text-input" placeholder="e.g. bracket, housing, sub-assembly…">
+        <div class="q-label" style="margin-top:10px;">Can you provide samples and .STEP files for the mating parts?</div>
+        <div class="radio-row">
+          <label><input type="radio" name="q_mating_files" value="yes"> Yes</label>
+          <label><input type="radio" name="q_mating_files" value="no"> No</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-label"><strong>6.</strong> Has a <strong>surface finish</strong> been specified in the RFQ or on the drawing?</div>
+      <div class="radio-row">
+        <label><input type="radio" name="q_finish" value="yes" onchange="show('finish_followup')"> Yes</label>
+        <label><input type="radio" name="q_finish" value="no" onchange="hide('finish_followup')"> No</label>
+      </div>
+      <div id="finish_followup" class="indent hidden">
+        <div class="q-label">Please confirm the required finish (select all that apply):</div>
+        <div class="checkbox-grid">
+          <label><input type="checkbox"> Raw</label>
+          <label><input type="checkbox"> Powder Coated</label>
+          <label><input type="checkbox"> Zinc Coated — Clear</label>
+          <label><input type="checkbox"> Zinc Coated — Yellow</label>
+          <label><input type="checkbox"> Zinc Coated — Black</label>
+          <label><input type="checkbox"> Chrome Plated — Polished</label>
+          <label><input type="checkbox"> Chrome Plated — Unpolished</label>
+          <label><input type="checkbox"> Hot Dip Galvanized</label>
+          <label><input type="checkbox"> Pre-Galvanized</label>
+        </div>
+        <div class="q-label" style="margin-top:10px;">If Powder Coated, is a RAL colour specified?</div>
+        <div class="radio-row">
+          <label><input type="radio" name="q_ral" value="yes"> Yes — RAL #: <input type="text" style="width:80px;border:1px solid #d1d5db;border-radius:4px;padding:4px 6px;font-size:13px;margin-left:4px;"></label>
+          <label><input type="radio" name="q_ral" value="no"> No / TBD</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-label"><strong>7.</strong> Has a working tolerance of <strong>≥ 0.015"</strong> for lengths and <strong>≥ 2°</strong> for angles been provided?</div>
+      <div class="radio-row">
+        <label><input type="radio" name="q_tol" value="yes"> Yes</label>
+        <label><input type="radio" name="q_tol" value="no"> No / Not specified</label>
+      </div>
+      <div class="note">If not specified, tolerances will be discussed during the discovery meeting.</div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-label"><strong>8.</strong> Does this RFQ include any <strong>aluminum or pre-galvanized welding</strong>?</div>
+      <div class="radio-row">
+        <label><input type="radio" name="q_alweld" value="yes"> Yes</label>
+        <label><input type="radio" name="q_alweld" value="no"> No</label>
+      </div>
+      <div class="note">Note: Aluminum or pre-galv welding will require a Design for Manufacturability (DFM) review.</div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-label"><strong>9.</strong> If this RFQ contains a <strong>multi-component welded assembly</strong>, have weld details been provided?</div>
+      <div class="radio-row">
+        <label><input type="radio" name="q_weld" value="yes"> Yes</label>
+        <label><input type="radio" name="q_weld" value="no"> No</label>
+        <label><input type="radio" name="q_weld" value="na"> N/A</label>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-label"><strong>10.</strong> Do any components exceed <strong>100"</strong> in height, width, or length?</div>
+      <div class="radio-row">
+        <label><input type="radio" name="q_oversize" value="yes"> Yes</label>
+        <label><input type="radio" name="q_oversize" value="no"> No</label>
+      </div>
+    </div>
+
+    <div class="q-block" style="margin-top:24px;">
+      <div class="q-label"><strong>Additional Comments / Notes</strong></div>
+      <textarea class="text-input" rows="4" placeholder="Flag anything you're unsure about, list components missing files or quantities, or add any other relevant details…" style="resize:vertical;"></textarea>
+    </div>
+
+    <div class="submit-area">
+      <p>Please return this form to your contact at least <strong>24 hours before</strong> your scheduled discovery meeting.</p>
+      <button class="submit-btn" onclick="window.print()">🖨 Print / Save as PDF</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function show(id) { document.getElementById(id).classList.remove('hidden'); }
+  function hide(id) { document.getElementById(id).classList.add('hidden'); }
+</script>
+</body>
+</html>
